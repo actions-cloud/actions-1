@@ -1,9 +1,11 @@
 name: My First WorkFlow
-run-name: "Action Performed by the ${{github.actor}}"
 on: push
 jobs:
   First_Job:
     runs-on: ubuntu-latest
+    permissions: 
+        contents: write
+        packages: write
     steps:
       - name: Welcome Message
         run: echo "Welcome to the CI/CD Workflow Action"
