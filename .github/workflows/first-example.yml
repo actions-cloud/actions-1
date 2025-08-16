@@ -7,8 +7,5 @@ jobs:
     steps:
       - name: Welcome Message
         run: echo "Welcome to the CI/CD Workflow Action"
-      - name: Listing the files
-        run: ls
-      - name: Reading The file
-        run: cat README.md
-        
+      - name: Current Working Dir
+        run: pwd
