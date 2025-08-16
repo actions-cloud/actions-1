@@ -1,0 +1,14 @@
+name: My First WorkFlow
+run-name: "Action Performed by the ${{github.actor}}"
+on: push
+jobs:
+  First_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome Message
+        run: echo "Welcome to the CI/CD Workflow Action"
+      - name: Listing the files
+        run: ls
+      - name: Reading The file
+        run: cat README.md
+        
