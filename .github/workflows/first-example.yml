@@ -3,13 +3,12 @@ on: push
 jobs:
   First_Job:
     runs-on: ubuntu-latest
-    permissions: 
-        contents: write
-        packages: write
     steps:
+      - name: Show default working directory
+        run: pwd
       - name: Adding Checkout Action
         uses: actions/checkout@v4
-      - name: Welcome Message
-        run: echo "Welcome to the CI/CD Workflow Action"
-      - name: Running Commands
-        run: pwd && ls -l && cat README.md
+      - name: Show workspace after checkout
+        run: |
+          echo "Workspace is: $GITHUB_WORKSPACE"
+          ls -la $GITHUB_WORKSPACE
