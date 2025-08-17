@@ -7,6 +7,8 @@ jobs:
         contents: write
         packages: write
     steps:
+      - name: Adding Checkout Action
+        uses: actions/checkout@v4
       - name: Welcome Message
         run: echo "Welcome to the CI/CD Workflow Action"
       - name: Current Working Dir
