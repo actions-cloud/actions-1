@@ -7,7 +7,6 @@ jobs:
       - name: Adding Checkout Action
         uses: actions/checkout@v4
         with:
-          sparse-checkout: .
-      - name: Running Commands
-        run: ls -al && touch a.com && ls
-        
+          sparse-checkout: monday
+      - name: Listing Files
+        run: ls -lt
