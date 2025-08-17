@@ -9,4 +9,4 @@ jobs:
         with:
           sparse-checkout: monday
       - name: Listing Files
-        run: ls -lt
+        run: ls -lt monday
