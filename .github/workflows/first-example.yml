@@ -4,11 +4,8 @@ jobs:
   First_Job:
     runs-on: ubuntu-latest
     steps:
-      - name: Adding Checkout Action
+      - name: Action Checkout
         uses: actions/checkout@v4
-      - name: Setup NodeJS Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Checking Node JS Version
-        run: node -v && npm -v && nvm -v
+      - name: Checking Node and NPM
+        run: node -v && npm -v
+        
