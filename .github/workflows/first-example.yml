@@ -4,11 +4,10 @@ jobs:
   First_Job:
     runs-on: ubuntu-latest
     steps:
-      - name: Show default working directory
-        run: pwd
       - name: Adding Checkout Action
         uses: actions/checkout@v4
-      - name: Show workspace after checkout
-        run: |
-          echo "Workspace is: $GITHUB_WORKSPACE"
-          ls -la $GITHUB_WORKSPACE
+        with:
+          sparse-checkout: .
+      - name: Running Commands
+        run: ls -al && touch a.com && ls
+        
