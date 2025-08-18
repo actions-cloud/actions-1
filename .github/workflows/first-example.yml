@@ -1,11 +1,32 @@
 name: My First WorkFlow
 on: push
 jobs:
-  First_Job:
+  installing:
     runs-on: ubuntu-latest
     steps:
       - name: Action Checkout
         uses: actions/checkout@v4
-      - name: Checking Node and NPM
-        run: node -v && npm -v
-        
+      - name: Installing Cowsay
+        run: |
+         sudo apt update -y
+         sudo apt install cowsay -y
+  creating:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Creating File
+        run: |
+         cowsay -f dragon "Hello Bro !!" >> dragon.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: file_data
+          path: dragon.txt
+  reading:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: file_data
+      - name: Reading file
+        run: |
+         cat dragon.txt
+         
