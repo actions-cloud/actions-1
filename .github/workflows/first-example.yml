@@ -12,6 +12,7 @@ jobs:
          sudo apt install cowsay -y
   creating:
     runs-on: ubuntu-latest
+    needs: installing
     steps:
       - name: Creating File
         run: |
@@ -22,6 +23,7 @@ jobs:
           path: dragon.txt
   reading:
     runs-on: ubuntu-latest
+    needs: creating
     steps:
       - uses: actions/download-artifact@v4
         with:
