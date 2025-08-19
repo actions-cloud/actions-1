@@ -4,7 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      artifact_name: ${{ steps.step1.outputs.name }}
+      artifact_name: ${{ steps.step1.outputs }}
     steps:
       - id: step1
         run: echo "name=my-app" >> $GITHUB_OUTPUT && cat $GITHUB_OUTPUT
