@@ -3,6 +3,7 @@ on: push
 jobs:
   Building:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Deploying Something
         run: |
