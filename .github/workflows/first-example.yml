@@ -5,8 +5,9 @@ jobs:
     strategy:
       matrix:
         version: [22.04,24.04,26.04]
+        env: [prod,dev,stg]
     runs-on: ubuntu-latest
     steps:
-      - name: Running in Ubuntu${{ matrix.version }}
+      - name: Running in Ubuntu${{ matrix.version }} on ${{matrix.env}}
         run: |
-          echo "Version is ${{matrix.version}}"
+          echo "Version is ${{matrix.version}}-${{matrix.env}}"
