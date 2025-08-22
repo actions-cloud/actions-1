@@ -1,17 +1,12 @@
-name: Continue on Error
+name: Matrix Strategy
 on: push
 jobs:
-  Building:
+  dploying:
+    strategy:
+      matrix:
+        version: [22.04,24.04,26.04]
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
-      - name: Deploying Something
+      - name: Running in Ubuntu${{ matrix.version }}
         run: |
-         google-chrome sh
-  
-  Testing:
-    runs-on: ubuntu-latest
-    needs: Building
-    steps:
-      - run: |
-         echo "Testing ..."
+          echo "Version is ${{matrix.version}}"
