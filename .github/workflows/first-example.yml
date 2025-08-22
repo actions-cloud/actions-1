@@ -1,14 +1,19 @@
-name: Matrix Strategy
+name: Dynamic Matrix Creation
 on: push
 jobs:
-  dploying:
-    strategy:
-      max-parallel: 3
-      matrix:
-        version: [22.04,24.04,26.04]
-        env: [prod,dev,stg]
+  generate-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - name: Running in Ubuntu${{ matrix.version }} on ${{matrix.env}}
+      - id: set-matrix
         run: |
-          echo "Version is ${{matrix.version}}-${{matrix.env}}"
+          echo 'matrix={"version":["1.0","2.0","3.0"]}' >> $GITHUB_OUTPUT
+
+  build:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
+    steps:
+      - run: echo "Running with version ${{ matrix.version }}"
