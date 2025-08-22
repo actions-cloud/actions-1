@@ -3,6 +3,7 @@ on: push
 jobs:
   dploying:
     strategy:
+      max-parallel: 3
       matrix:
         version: [22.04,24.04,26.04]
         env: [prod,dev,stg]
