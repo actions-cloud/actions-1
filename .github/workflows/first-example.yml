@@ -8,3 +8,4 @@ jobs:
         run: |
          echo "Variable job.container ${{job.container}}"
          echo "Variable job.status ${{job.status}}"
+         echo "Hello"
