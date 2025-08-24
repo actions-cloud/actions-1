@@ -1,19 +1,10 @@
-name: Dynamic Matrix Creation
+name: Job Context Information
 on: push
 jobs:
-  generate-matrix:
+  JobContextInformation:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - id: set-matrix
+      - name: Checking Variables and Values
         run: |
-          echo 'matrix={"version":["1.0","2.0","3.0"]}' >> $GITHUB_OUTPUT
-
-  build:
-    needs: generate-matrix
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
-    steps:
-      - run: echo "Running with version ${{ matrix.version }}"
+         echo "Variable job.container ${{job.container}}"
+         echo "Variable job.status ${{job.status}}"
