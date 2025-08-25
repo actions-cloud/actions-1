@@ -1,11 +1,20 @@
-name: Job Context Information
-on: push
+name: Workflow Prod Deployment
+on:
+  push: 
+    branches: [main]
 jobs:
-  JobContextInformation:
+  BuildingCode:
     runs-on: ubuntu-latest
     steps:
-      - name: Checking Variables and Values
+      - name: Building the Code
         run: |
-         echo "Variable job.container ${{job.container}}"
-         echo "Variable job.status ${{job.status}}"
-         echo "Hello"
+         echo "Code is Builing"
+  DeploymentCode:
+    runs-on: ubuntu-latest
+    needs: BuildingCode
+    steps:
+      - name: Deploy Code
+        run: |
+         echo "Code is Deploying"
+
+         
